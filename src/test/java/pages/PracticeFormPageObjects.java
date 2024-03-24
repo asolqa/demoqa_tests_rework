@@ -8,7 +8,8 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 public class PracticeFormPageObjects {
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement formWrapper =  $(".practice-form-wrapper"),
+            firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
@@ -28,7 +29,7 @@ public class PracticeFormPageObjects {
 
     public PracticeFormPageObjects openPage() {
         open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        formWrapper.shouldHave(text("Student Registration Form"));
         return this;
     }
 
@@ -99,6 +100,7 @@ public class PracticeFormPageObjects {
 
         return this;
     }
+    @SuppressWarnings("UnusedReturnValue")
     public PracticeFormPageObjects submitForm() {
         submitButton.click();
 
@@ -109,6 +111,7 @@ public class PracticeFormPageObjects {
 
         return this;
     }
+    @SuppressWarnings("UnusedReturnValue")
     public PracticeFormPageObjects checkNoModal() {
         modalFormComponent.checkNoModalAppear();
 
